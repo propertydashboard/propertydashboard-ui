@@ -1,4 +1,5 @@
 import React, { useState, FunctionComponent } from 'react'
+import Link from 'next/link'
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { useRouter } from 'next/router'
@@ -49,6 +50,9 @@ function Property() {
 
   return (
     <>
+      <Link href="/">
+        <a>Go back</a>
+      </Link>
       <h1>Property: {router.query.id}</h1>
       <p>{getProperty.name}</p>
       <p>{getProperty.price}</p>

@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "BC6x9iHWKrWuiBRuUbI_v",
+      "createdAt": 1589639007756,
+      "username": "lewis",
+      "salt": "2f9e2d8a15f1d489b754f61e63a5fa53",
+      "hash": "79a30445d39c891182bca7963451748475e4f603bccef2b3168fd837bbb4aac0ed2c5ac2190b3d6622e478986a22268708ba283cca5bb46d7952c7fb8518152b"
+    },
+    {
+      "id": "6rhs3G8wUBWbThzHBCODE",
+      "createdAt": 1589639043556,
+      "username": "becca",
+      "salt": "9582a7dfa7debc638c8cf6c582a2c84a",
+      "hash": "4c51a056be200151b0300e6fb59f21e1b03127396df68d7c160aef80beaee1b287df6840dcc3ad94c9db1dd368d1b26498dee2f5d9338886f6845a582a7c0131"
+    }
+  ],
+  "properties": [
+    {
+      "id": "vELPR1W9105PxHeZjNsY0",
+      "userId": "BC6x9iHWKrWuiBRuUbI_v",
+      "name": "Manchester",
+      "price": 140,
+      "mortgage": 95
+    },
+    {
+      "id": "evb6t78jiJ9ai87DPJN2q",
+      "userId": "6rhs3G8wUBWbThzHBCODE",
+      "name": "romford",
+      "price": 400,
+      "mortgage": 300
+    },
+    {
+      "id": "BaMGqxNaZH2eGaBIX10Qc",
+      "userId": "BC6x9iHWKrWuiBRuUbI_v",
+      "name": "Liverpool",
+      "price": 125,
+      "mortgage": 90
+    },
+    {
+      "id": "qXKIcRSdgWMwM3deHANe2",
+      "userId": "BC6x9iHWKrWuiBRuUbI_v",
+      "name": "Southend",
+      "price": 190,
+      "mortgage": 145
+    }
+  ]
+}

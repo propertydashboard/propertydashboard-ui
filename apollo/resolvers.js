@@ -1,70 +1,77 @@
 const fs = require('fs')
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('lib/db.json')
+const db = low(adapter)
+
+import { createPropertyModel } from '../lib/propertyModel'
+
+const Property = createPropertyModel(db)
+
+import nanoid from 'nanoid'
+
 let rawdata = fs.readFileSync('properties.json')
 let properties = JSON.parse(rawdata).data
 
-const getEquity = () => {
+const getEquity = args => {
   return (
-    properties.reduce((acc, cur) => acc + cur.price, 0) -
-    properties.reduce((acc, cur) => acc + cur.mortgage, 0)
+    Property.findAll(args).reduce((acc, cur) => acc + cur.price, 0) -
+    Property.findAll(args).reduce((acc, cur) => acc + cur.mortgage, 0)
   )
 }
 
-const getPortfolioValue = () => {
-  return properties.reduce((acc, cur) => acc + cur.price, 0)
+const getPortfolioValue = args => {
+  return Property.findAll(args).reduce((acc, cur) => acc + cur.price, 0)
 }
 
 export const resolvers = {
   Query: {
     getProperty: (_, args) => {
-      return properties.find(element => args.id === element.id)
+      return Property.findOne(args)
     },
-    getProperties: () => {
-      return properties
+    getProperties: (_, args) => {
+      return Property.findAll(args)
     },
-    getPortfolioValue,
-    getEquity,
-    getLTV: () => {
-      return 100 - parseInt((getEquity() / getPortfolioValue()) * 100, 10)
+    getPortfolioValue: (_, args) => {
+      return getPortfolioValue(args)
+    },
+    getEquity: (_, args) => {
+      return getEquity(args)
+    },
+    getLTV: (_, args) => {
+      const val =
+        100 - Math.floor((getEquity(args) / getPortfolioValue(args)) * 100)
+      return val ? val : 0
     }
   },
   Mutation: {
-    addProperty: (_, { input: { id, name, price, mortgage } }) => {
-      properties.push({ id, name, price, mortgage })
-      const newProperties = {
-        data: properties
-      }
-      let data = JSON.stringify(newProperties)
-      fs.writeFileSync('properties.json', data)
-      return properties.find(element => input.id === element.id)
+    addProperty: async (_, { input: { userId, name, price, mortgage } }) => {
+      const id = nanoid()
+
+      await Property.create({ id, userId, name, price, mortgage })
+
+      const prop = await Property.findOne({ id })
+
+      return prop
     },
     updateProperty: (_, { input: { id, name, price, mortgage } }) => {
-      const propertyIndex = properties.findIndex(element => element.id === id)
-      const updatedProperties = properties.filter(
-        (element, index) => index !== propertyIndex
+      const updatedProperty = Property.updateOne(
+        { id },
+        {
+          name,
+          price,
+          mortgage
+        }
       )
-      properties = updatedProperties
-      properties.push({
-        id,
-        name,
-        price,
-        mortgage
-      })
-      const newProperties = {
-        data: properties
-      }
-      let data = JSON.stringify(newProperties)
-      fs.writeFileSync('properties.json', data)
-      return properties.find(element => id === element.id)
+      return updatedProperty
     },
     removeProperty: (_, { id }) => {
-      const _properties = properties
-      properties = properties.filter(element => element.id !== id)
-      const newProperties = {
-        data: properties
-      }
-      let data = JSON.stringify(newProperties)
-      fs.writeFileSync('properties.json', data)
-      return _properties.find(element => id === element.id)
+      const removedProperty = Property.findOne({ id })
+      Property.removeOne({ id })
+
+      return removedProperty
     }
   }
 }

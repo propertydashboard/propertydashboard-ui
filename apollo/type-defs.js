@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export const typeDefs = gql`
   type Property {
     id: String
+    userId: String
     name: String
     price: Int
     mortgage: Int
@@ -10,13 +11,14 @@ export const typeDefs = gql`
 
   type Query {
     getProperty(id: String): Property
-    getProperties: [Property]
-    getPortfolioValue: Int
-    getEquity: Int
-    getLTV: Int
+    getProperties(userId: String): [Property]
+    getPortfolioValue(userId: String): Int
+    getEquity(userId: String): Int
+    getLTV(userId: String): Int
   }
 
   input PropertyInput {
+    userId: String
     id: String
     name: String
     price: Int

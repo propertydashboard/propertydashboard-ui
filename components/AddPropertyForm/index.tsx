@@ -1,19 +1,26 @@
 import React, { useState, FunctionComponent } from 'react'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
+import { useUser } from '../../lib/hooks'
 import Field from '../Field'
 
 const addPropertyMutation = gql`
   mutation addPropertyMutation(
-    $id: String
+    $userId: String
     $name: String
     $price: Int
     $mortgage: Int
   ) {
     addProperty(
-      input: { id: $id, name: $name, price: $price, mortgage: $mortgage }
+      input: {
+        userId: $userId
+        name: $name
+        price: $price
+        mortgage: $mortgage
+      }
     ) {
       id
+      userId
       name
       price
       mortgage
@@ -22,20 +29,14 @@ const addPropertyMutation = gql`
 `
 
 const AddPropertyForm: FunctionComponent = () => {
-  const [newPropertyId, setNewPropertyId] = useState('')
   const [newPropertyName, setNewPropertyName] = useState('')
   const [newPropertyPrice, setNewPropertyPrice] = useState('')
   const [newPropertyMortgage, setNewPropertyMortgage] = useState('')
   const [addProperty] = useMutation(addPropertyMutation)
+  const user = useUser()
 
   return (
     <div>
-      <Field
-        label={'ID'}
-        value={newPropertyId}
-        updateValue={setNewPropertyId}
-      />
-
       <Field
         label={'Name'}
         value={newPropertyName}
@@ -59,7 +60,7 @@ const AddPropertyForm: FunctionComponent = () => {
           e.preventDefault()
           addProperty({
             variables: {
-              id: newPropertyId,
+              userId: user.id,
               name: newPropertyName,
               price: Number(newPropertyPrice),
               mortgage: Number(newPropertyMortgage)
