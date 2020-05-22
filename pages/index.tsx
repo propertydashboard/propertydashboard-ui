@@ -41,7 +41,7 @@ function Dashboard() {
       <Link href="/api/logout">
         <a>Logout</a>
       </Link>
-      <p>Currently logged in as: {JSON.stringify(user)}</p>
+      <p>Logged in as: {JSON.stringify(user)}</p>
       <h1>Dashboard</h1>
       <h2>Portfolio value: £{getPortfolioValue}K</h2>
       <h2>Equity: £{getEquity}K</h2>
