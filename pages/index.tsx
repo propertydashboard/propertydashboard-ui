@@ -81,6 +81,9 @@ function Dashboard() {
       </button>
       <AddPropertyForm />
       <RemovePropertyForm properties={getProperties} />
+      <p className="h6 font-weight-light mt-3 mb-3">
+        Polygon Labs Limited 2020
+      </p>
     </Layout>
   ) : null
 }
