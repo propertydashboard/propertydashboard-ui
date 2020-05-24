@@ -7,6 +7,7 @@ export const typeDefs = gql`
     name: String
     price: Int
     mortgage: Int
+    image: String
   }
 
   type Query {
@@ -23,6 +24,7 @@ export const typeDefs = gql`
     name: String
     price: Int
     mortgage: Int
+    image: String
   }
 
   type Mutation {

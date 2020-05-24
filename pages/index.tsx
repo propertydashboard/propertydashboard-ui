@@ -5,6 +5,8 @@ import { withApollo } from '../apollo/client'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 
+import Layout from '../components/layout'
+
 import PropertyList from '../components/PropertyList'
 import AddPropertyForm from '../components/AddPropertyForm'
 import RemovePropertyForm from '../components/RemovePropertyForm'
@@ -22,6 +24,7 @@ function Dashboard() {
       id
       name
       price
+      image
     }
   }
 `
@@ -37,19 +40,48 @@ function Dashboard() {
   })
 
   return user ? (
-    <div>
-      <Link href="/api/logout">
-        <a>Logout</a>
-      </Link>
-      <p>Logged in as: {JSON.stringify(user)}</p>
-      <h1>Dashboard</h1>
-      <h2>Portfolio value: £{getPortfolioValue}K</h2>
-      <h2>Equity: £{getEquity}K</h2>
-      <h2>Portfolio LTV: {getLTV}%</h2>
+    <Layout>
+      <h1 className="h4 font-weight-light mt-5">Portfolio overview:</h1>
+      <table className="table mb-5">
+        <thead>
+          <tr>
+            <th scope="col">Portfolio Value</th>
+            <th scope="col">Equity</th>
+            <th scope="col">Portfolio LTV</th>
+            <th scope="col">Number of properties</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>£{getPortfolioValue}K</td>
+            <td>£{getEquity}K</td>
+            <td>{getLTV}%</td>
+            <td>{getProperties && getProperties.length}</td>
+          </tr>
+        </tbody>
+      </table>
+
       {getProperties && <PropertyList properties={getProperties} />}
+
+      <button
+        type="button"
+        className="btn btn-outline-secondary btn-block"
+        data-toggle="modal"
+        data-target="#addModal"
+      >
+        Add a property
+      </button>
+      <button
+        type="button"
+        className="btn btn-outline-secondary btn-block"
+        data-toggle="modal"
+        data-target="#removeModal"
+      >
+        Remove a property
+      </button>
       <AddPropertyForm />
       <RemovePropertyForm properties={getProperties} />
-    </div>
+    </Layout>
   ) : null
 }
 

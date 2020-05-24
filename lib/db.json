@@ -19,9 +19,10 @@
     {
       "id": "vELPR1W9105PxHeZjNsY0",
       "userId": "BC6x9iHWKrWuiBRuUbI_v",
-      "name": "Manchester",
-      "price": 139,
-      "mortgage": 95
+      "name": "21 Clarendon Road",
+      "price": 140,
+      "mortgage": 95,
+      "image": "https://lid.zoocdn.com/1024/768/f43adc6fe232aeef59fb612effdc1b5cae7d13d8.jpg"
     },
     {
       "id": "evb6t78jiJ9ai87DPJN2q",
@@ -33,16 +34,18 @@
     {
       "id": "BaMGqxNaZH2eGaBIX10Qc",
       "userId": "BC6x9iHWKrWuiBRuUbI_v",
-      "name": "Liverpool",
+      "name": "16 Ionic Road",
       "price": 125,
-      "mortgage": 90
+      "mortgage": 90,
+      "image": "https://lid.zoocdn.com/1024/768/105acb234afbc139e4bf3a1c4fc7d06f9e44a643.jpg"
     },
     {
-      "id": "qXKIcRSdgWMwM3deHANe2",
+      "id": "l465jV4hWY5J3boSld1zy",
       "userId": "BC6x9iHWKrWuiBRuUbI_v",
-      "name": "Southend",
-      "price": 190,
-      "mortgage": 145
+      "name": "87 Clydesdale Road",
+      "price": 400,
+      "mortgage": 300,
+      "image": "https://lid.zoocdn.com/1024/768/6c916c7b70fb4819f787581831a331cb45a805dd.jpg"
     }
   ]
 }

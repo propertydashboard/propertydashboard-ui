@@ -12,14 +12,15 @@ const Field: FunctionComponent<FieldProps> = ({
   updateValue
 }) => {
   return (
-    <label>
-      {label}{' '}
+    <div className="form-group">
+      <label>{label}</label>
       <input
         type="text"
+        className="form-control"
         value={value}
         onChange={e => updateValue(e.target.value)}
       />
-    </label>
+    </div>
   )
 }
 

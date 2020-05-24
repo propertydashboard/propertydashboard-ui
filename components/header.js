@@ -5,61 +5,36 @@ const Header = () => {
   const user = useUser()
 
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          {user ? (
-            <>
-              <li>
-                <Link href="/profile">
-                  <a>Profile</a>
+    <header className="row media bg-info pt-3 pb-3 mb-5">
+      <div className="col"></div>
+      <div className="col-6 d-flex">
+        <Link href="/">
+          <a className="nav-link text-white">
+            <h1 className="h3 text-white">Propertydashboard.io</h1>
+          </a>
+        </Link>
+
+        <nav className="media-body d-inline">
+          <ul className="nav justify-content-end">
+            {user ? (
+              <>
+                <li class="nav-item">
+                  <a href="/api/logout" className="nav-link text-white">
+                    Logout
+                  </a>
+                </li>
+              </>
+            ) : (
+              <li class="nav-item">
+                <Link href="/login">
+                  <a className="nav-link text-white">Login</a>
                 </Link>
               </li>
-              <li>
-                <a href="/api/logout">Logout</a>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-      <style jsx>{`
-        nav {
-          max-width: 42rem;
-          margin: 0 auto;
-          padding: 0.2rem 1.25rem;
-        }
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-        li {
-          margin-right: 1rem;
-        }
-        li:first-child {
-          margin-left: auto;
-        }
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        header {
-          color: #fff;
-          background-color: #333;
-        }
-      `}</style>
+            )}
+          </ul>
+        </nav>
+      </div>
+      <div className="col"></div>
     </header>
   )
 }
