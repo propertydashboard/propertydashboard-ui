@@ -9,7 +9,7 @@ const Header = () => {
       <div className="col"></div>
       <div className="col-6 d-flex">
         <Link href="/">
-          <a className="nav-link text-white">
+          <a className="nav-link text-white pl-0">
             <h1 className="h3 text-white">Propertydashboard.io</h1>
           </a>
         </Link>
