@@ -39,7 +39,6 @@ const Login = () => {
   return (
     <Layout>
       <div className="login">
-    !
         <Form isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>
     </Layout>
