@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "startProd": "pm2 start 'next start' --name property_dashboard",
     "lint": "eslint ./components/** ./pages/** -c .eslintrc.json --fix --ext js,jsx,tsx"
   },
   "dependencies": {
