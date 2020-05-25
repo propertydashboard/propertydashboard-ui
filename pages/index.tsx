@@ -163,7 +163,7 @@ function Dashboard() {
           role="tabpanel"
           aria-labelledby="nav-admin-tab"
         >
-          Admin
+          ...
         </div>
       </div>
 
