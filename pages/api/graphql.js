@@ -1,6 +1,8 @@
 import { ApolloServer } from 'apollo-server-micro'
 import { schema } from '../../apollo/schema'
 
+require('./db')
+
 const apolloServer = new ApolloServer({ schema })
 
 export const config = {

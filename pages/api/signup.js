@@ -1,5 +1,7 @@
 import { createUser } from '../../lib/user'
 
+require('./db')
+
 export default async function signup(req, res) {
   try {
     await createUser(req.body)

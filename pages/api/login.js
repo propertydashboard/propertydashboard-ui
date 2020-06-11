@@ -4,6 +4,8 @@ import { localStrategy } from '../../lib/password-local'
 import { encryptSession } from '../../lib/iron'
 import { setTokenCookie } from '../../lib/auth-cookies'
 
+require('./db')
+
 const authenticate = (method, req, res) =>
   new Promise((resolve, reject) => {
     passport.authenticate(method, { session: false }, (error, token) => {
