@@ -1,9 +1,6 @@
 import connect from '../../lib/connect'
 
-connect(
-  'mongodb+srv://admin:propertydashboard@cluster0-qyav1.mongodb.net/property-dashboard?retryWrites=true&w=majority',
-  { useNewUrlParser: true }
-)
+connect('mongodb://localhost:27017/property-dashboard')
   .then(async () => {
     console.log('connected to mongodb')
   })
