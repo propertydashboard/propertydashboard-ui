@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "manchester",
+    "city": "manchester",
+    "value": 175000,
+    "mortgage": 95000
+  },
+  {
+    "id": 2,
+    "name": "liverpool 1",
+    "city": "liverpool",
+    "value": 165000,
+    "mortgage": 110000
+  },
+  {
+    "id": 3,
+    "name": "liverpool 2",
+    "city": "liverpool",
+    "value": 165000,
+    "mortgage": 108000
+  },
+  {
+    "id": 4,
+    "name": "london 1",
+    "city": "london",
+    "value": 800000,
+    "mortgage": 569000
+  }
+]
